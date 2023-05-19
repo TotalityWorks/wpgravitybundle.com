@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 function Seo(props: any) {
@@ -24,7 +23,8 @@ function Seo(props: any) {
   const defaultTitle = allWp?.nodes[0]?.generalSettings?.title
 
   return (
-    <Helmet
+    <>
+      {/* <Helmet
       htmlAttributes={{
         lang,
       }}
@@ -64,7 +64,8 @@ function Seo(props: any) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    /> */}
+    </>
   )
 }
 
