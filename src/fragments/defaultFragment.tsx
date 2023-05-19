@@ -6,25 +6,25 @@ export const defaultFragment = graphql`
     flexibleContentModules {
       contentModule {
         ...Banner
-        # ...CallToAction
-        # ...Carousel
-        # ...DataTable
-        # ...Faq
-        # ...FeatureLinks
-        # ...Form
-        # ...Gallery
-        # ...Hero
-        # ...LatestArticles
-        # ...LinkBoxes
-        # ...List
-        # ...Location
-        # ...Logos
-        # ...NavBlock
-        # ...SupportTiers
-        # ...TextArea
-        # ...TextBlock
-        # ...TextImage
-        # ...Videos
+        ...CallToAction
+        ...Carousel
+        ...DataTable
+        ...Faq
+        ...FeatureLinks
+        ...Form
+        ...Gallery
+        ...Hero
+        ...LatestArticles
+        ...LinkBoxes
+        ...List
+        ...Location
+        ...Logos
+        ...NavBlock
+        ...SupportTiers
+        ...TextArea
+        ...TextBlock
+        ...TextImage
+        ...Videos
       }
     }
   }

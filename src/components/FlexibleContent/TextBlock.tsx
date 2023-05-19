@@ -1,23 +1,24 @@
 import React from "react"
 import { graphql } from "gatsby"
+// import Parser from "html-react-parser"
 
 import { FlexibleContentProps } from "../../interfaces"
 import Edges from "../Layout/Edges"
 
-export interface ListProps extends FlexibleContentProps {
-  listTitle?: string
-  listText?: string
-  listBackgroundColor?: string
-  listButton?: {
+export interface TextBlockProps extends FlexibleContentProps {
+  textBlockBackgroundColor: string
+  textBlockTitle: string
+  textBlockText: string
+  textBlockLocation: string
+  textBlockButton: {
     target?: string
     title?: string
     url?: string
   }
-  list?: []
 }
 
-const List: React.FC<ListProps> = props => {
-  const { listTitle } = props
+const TextBlock: React.FC<TextBlockProps> = props => {
+  const { textBlockTitle } = props
 
   return (
     <>
@@ -31,7 +32,7 @@ const List: React.FC<ListProps> = props => {
             <div className="flex w-full">
               <div className="ml-3 max-w-full	w-full">
                 <h3 className="not-prose text-sm font-medium text-red-800">
-                  List: {listTitle}
+                  Text Block: {textBlockTitle}
                 </h3>
                 <div className="mt-2 text-sm text-red-700">
                   <pre>{JSON.stringify(props, null, 2)}</pre>
@@ -45,42 +46,37 @@ const List: React.FC<ListProps> = props => {
   )
 }
 
-export default List
+export default TextBlock
 
 export const fragment = graphql`
-  fragment List on WpDefaultTemplate_Flexiblecontentmodules_ContentModule {
-    ... on WpDefaultTemplate_Flexiblecontentmodules_ContentModule_List {
+  fragment TextBlock on WpDefaultTemplate_Flexiblecontentmodules_ContentModule {
+    ... on WpDefaultTemplate_Flexiblecontentmodules_ContentModule_TextBlock {
       fieldGroupName
-      listTitle
-      listText
-      listBackgroundColor
-      listButton {
+      textBlockBackgroundColor
+      textBlockTitle
+      textBlockText
+      textBlockLocation
+      textBlockButton {
         target
         title
         url
       }
-      list {
-        title
-        text
-      }
     }
   }
 
-  #   fragment contactList on WpTemplate_Contact_Flexiblecontentmodules_ContentModule {
-  #     ... on WpTemplate_Contact_Flexiblecontentmodules_ContentModule_List {
+  #   fragment contactTextBlock on WpTemplate_Contact_Flexiblecontentmodules_ContentModule {
+  #     ... on WpTemplate_Contact_Flexiblecontentmodules_ContentModule_TextBlock {
   #       fieldGroupName
-  #       listTitle
-  #       listText
-  #       listBackgroundColor
-  #       listButton {
+  #       textBlockBackgroundColor
+  #       textBlockTitle
+  #       textBlockText
+  #       textBlockLocation
+  #       textBlockButton {
   #         target
   #         title
   #         url
   #       }
-  #       list {
-  #         title
-  #         text
-  #       }
   #     }
   #   }
+  #
 `

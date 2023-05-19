@@ -1,13 +1,12 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image"
+import { graphql } from "gatsby"
+import { IGatsbyImageData } from "gatsby-plugin-image"
 
 import { FlexibleContentProps } from "../../interfaces"
 import Edges from "../Layout/Edges"
 
 export interface HeroProps extends FlexibleContentProps {
   heroTitle?: string
-  //   heroSubtitle?: string
   heroText?: string
   heroImage?: {} // Add to WordPress
   heroBackgroundColor?: string
@@ -35,36 +34,34 @@ export interface HeroProps extends FlexibleContentProps {
 const Hero: React.FC<HeroProps> = props => {
   const {
     heroTitle,
-    heroText,
-    heroGallery,
-    heroSingleImage,
-    heroPrimaryButton,
-    heroSecondaryButton,
+    // heroText,
+    // heroGallery,
+    // heroSingleImage,
+    // heroPrimaryButton,
+    // heroSecondaryButton,
   } = props
 
-  const image =
-    heroSingleImage?.image?.localFile &&
-    getImage(heroSingleImage.image?.localFile)
   return (
     <>
       <Edges size="lg">
-        {heroTitle && <h1>{heroTitle}</h1>}
-        {heroText && <p children={heroText} />}
-        {heroGallery && <pre>{JSON.stringify(heroGallery, null, 2)}</pre>}
-        {image && (
-          <GatsbyImage
-            image={image}
-            alt={heroSingleImage?.image?.altText || ""}
-          />
-        )}
-        {heroPrimaryButton && (
-          <Link to={`${heroPrimaryButton.url}`}>{heroPrimaryButton.title}</Link>
-        )}
-        {heroSecondaryButton && (
-          <Link to={`${heroSecondaryButton.url}`}>
-            {heroSecondaryButton.title}
-          </Link>
-        )}
+        <div
+          className={
+            "mx-auto my-12 px-4 sm:px-6 lg:px-8 w-full break-normal mt-4 bg-red-100	border border-solid border-red-200 rounded-md	p-5"
+          }
+        >
+          <div className="rounded-md bg-red-50 p-4">
+            <div className="flex w-full">
+              <div className="ml-3 max-w-full	w-full">
+                <h3 className="not-prose text-sm font-medium text-red-800">
+                  Hero: {heroTitle}
+                </h3>
+                <div className="mt-2 text-sm text-red-700">
+                  <pre>{JSON.stringify(props, null, 2)}</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </Edges>
     </>
   )
@@ -77,7 +74,6 @@ export const fragment = graphql`
     ... on WpDefaultTemplate_Flexiblecontentmodules_ContentModule_Hero {
       fieldGroupName
       heroTitle
-      #   heroSubtitle
       heroText
       heroBackgroundColor
       heroBackgroundVideo

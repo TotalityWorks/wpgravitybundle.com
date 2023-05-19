@@ -47,91 +47,24 @@ const TextImage: React.FC<TextImageProps> = props => {
   return (
     <>
       <Edges size="lg">
-        {/* 
-            Ternary checks Left of Text first, then Right of Text.
-            If neither, then returns default layout.
-        */}
-        {textImagePosition === "Left of Text" ? (
-          <>
-            {textImageTitle && <h2 children={textImageTitle} />}
-
-            {textImageSubtitle && <h3 children={textImageSubtitle} />}
-
-            {image && (
-              <GatsbyImage image={image} alt={textImage?.altText || ""} />
-            )}
-
-            <div>{textImageText && Parser(textImageText)}</div>
-
-            {textImageButton && (
-              <a href={textImageButton.url} children={textImageButton.title} />
-            )}
-          </>
-        ) : textImagePosition === "Right of Text" ? (
-          <>
-            {textImageTitle && <h2 children={textImageTitle} />}
-
-            {textImageSubtitle && <h3 children={textImageSubtitle} />}
-
-            {image && (
-              <GatsbyImage image={image} alt={textImage?.altText || ""} />
-            )}
-
-            <div>{textImageText && Parser(textImageText)}</div>
-
-            {textImageButton && (
-              <a href={textImageButton.url} children={textImageButton.title} />
-            )}
-          </>
-        ) : (
-          <>
-            {/* Above Title, Below Title, Below Text options */}
-            {aboveTitle && (
-              <>
-                <figure>
-                  {alternativeImage && (
-                    <GatsbyImage
-                      image={alternativeImage}
-                      alt={altImage?.altText || ""}
-                    />
-                  )}
-                </figure>
-              </>
-            )}
-
-            {textImageTitle && <h2 children={textImageTitle} />}
-
-            {textImageSubtitle && <h3 children={textImageSubtitle} />}
-
-            {belowTitle && (
-              <>
-                {alternativeImage && (
-                  <GatsbyImage
-                    image={alternativeImage}
-                    alt={altImage?.altText || ""}
-                  />
-                )}
-              </>
-            )}
-
-            <div>{textImageText && Parser(textImageText)}</div>
-
-            {textImageButton && (
-              <a href={textImageButton.url} children={textImageButton.title} />
-            )}
-
-            {belowText && (
-              <>
-                {alternativeImage && (
-                  <GatsbyImage
-                    image={alternativeImage}
-                    alt={altImage?.altText || ""}
-                  />
-                )}
-              </>
-            )}
-          </>
-        )}
+        <div
+          className={
+            "mx-auto my-12 px-4 sm:px-6 lg:px-8 w-full break-normal mt-4 bg-red-100	border border-solid border-red-200 rounded-md	p-5"
+          }
+        >
+          <div className="rounded-md bg-red-50 p-4">
+            <div className="flex w-full">
+              <div className="ml-3 max-w-full	w-full">
+                <h3 className="not-prose text-sm font-medium text-red-800">
+                  Text Image: {textImageTitle}
+                </h3>
+                <div className="mt-2 text-sm text-red-700">
+                  <pre>{JSON.stringify(props, null, 2)}</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </Edges>
     </>
   )

@@ -85,7 +85,7 @@ export const categoryQuery = graphql`
     }
 
     posts: allWpPost(
-      sort: { fields: [date], order: DESC }
+      sort: { date: DESC }
       limit: $postsPerPage
       skip: $offset
       filter: { categories: { nodes: { elemMatch: { id: { eq: $id } } } } }

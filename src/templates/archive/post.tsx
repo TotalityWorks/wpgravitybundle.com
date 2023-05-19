@@ -87,7 +87,7 @@ export const pageQuery = graphql`
     }
 
     posts: allWpPost(
-      sort: { fields: [date], order: DESC }
+      sort: { date: DESC }
       limit: $postsPerPage
       skip: $offset
     ) {

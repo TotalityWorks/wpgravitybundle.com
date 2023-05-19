@@ -32,60 +32,29 @@ export interface LinkBoxesProps extends FlexibleContentProps {
 }
 
 const LinkBoxes: React.FC<LinkBoxesProps> = props => {
-  const { linkBoxesTitle, linkBoxesText, linkBoxesButton, linkBoxes } = props
+  const { linkBoxesTitle } = props
 
   return (
     <>
       <Edges size="lg">
-        {linkBoxesTitle && (
-          <div>
-            <h2 children={linkBoxesTitle} />
-            {linkBoxesText && <p children={linkBoxesText} />}
+        <div
+          className={
+            "mx-auto my-12 px-4 sm:px-6 lg:px-8 w-full break-normal mt-4 bg-red-100	border border-solid border-red-200 rounded-md	p-5"
+          }
+        >
+          <div className="rounded-md bg-red-50 p-4">
+            <div className="flex w-full">
+              <div className="ml-3 max-w-full	w-full">
+                <h3 className="not-prose text-sm font-medium text-red-800">
+                  Link Boxes: {linkBoxesTitle}
+                </h3>
+                <div className="mt-2 text-sm text-red-700">
+                  <pre>{JSON.stringify(props, null, 2)}</pre>
+                </div>
+              </div>
+            </div>
           </div>
-        )}
-
-        {linkBoxes && (
-          <>
-            {linkBoxes.map(box => {
-              const image =
-                box?.image?.localFile && getImage(box.image.localFile)
-
-              return (
-                <>
-                  <div key={box.title || box.text}>
-                    {image && (
-                      <GatsbyImage
-                        image={image}
-                        alt={box?.image?.altText || ""}
-                      />
-                    )}
-                    <div>
-                      <div>
-                        <span>
-                          {box.title && <p>{box.title}</p>}
-                          {box.text && <p>{box.text}</p>}
-                        </span>
-
-                        {box.button && (
-                          <a
-                            href={box.button.url}
-                            children={box.button.title}
-                          />
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </>
-              )
-            })}
-          </>
-        )}
-
-        {linkBoxesButton && (
-          <Link to={linkBoxesButton.url || ""}>
-            <span>{linkBoxesButton.title}</span>
-          </Link>
-        )}
+        </div>
       </Edges>
     </>
   )
