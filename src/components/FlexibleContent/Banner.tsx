@@ -35,10 +35,10 @@ const Banner: React.FC<BannerProps> = props => {
             <div className="flex w-full">
               <div className="ml-3 max-w-full	w-full">
                 <h3 className="not-prose text-sm font-medium text-red-800">
-                  {bannerTitle}
+                  Banner: {bannerTitle}
                 </h3>
                 <div className="mt-2 text-sm text-red-700">
-                  {JSON.stringify(props, null, 2)}
+                  <pre>{JSON.stringify(props, null, 2)}</pre>
                 </div>
               </div>
             </div>
