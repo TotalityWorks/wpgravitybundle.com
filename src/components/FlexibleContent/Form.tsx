@@ -21,9 +21,9 @@ const Form: React.FC<FormProps> = props => {
     // formBackgroundColor
   } = props
 
-  const { allWpGravityFormsForm } = useGravityData()
+  const { allWpGfForm } = useGravityData()
 
-  const form = allWpGravityFormsForm.nodes.find(
+  const form = allWpGfForm.nodes.find(
     (form: any) => Number(form.formId) === Number(formId)
   )
 

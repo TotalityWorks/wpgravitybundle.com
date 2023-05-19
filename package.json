@@ -37,7 +37,7 @@
     "gatsby-plugin-sharp": "^4.16.1",
     "gatsby-source-filesystem": "^4.16.0",
     "gatsby-source-wordpress": "^6.16.1",
-    "gatsby-theme-headless-wordpress": "^0.1.10",
+    "gatsby-theme-headless-wordpress": "^0.1.14-beta.0",
     "gatsby-transformer-sharp": "^4.16.0",
     "graphql": "^15.8.0",
     "html-react-parser": "^1.4.14",

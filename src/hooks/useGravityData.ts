@@ -1,82 +1,28 @@
 import { useStaticQuery, graphql } from "gatsby"
 
 const useGravityData = () => {
-  const { allWpGravityFormsForm } = useStaticQuery(
+  const { allWpGfForm } = useStaticQuery(
     graphql`
       query FormQuery {
-        allWpGravityFormsForm {
+        allWpGfForm {
           nodes {
-            formId
-            title
-            description
-            button {
-              type
-              text
-            }
-            confirmations {
-              isDefault
-              message
-            }
+            databaseId
+            cssClass
             formFields {
               nodes {
-                id
                 type
-                formId
-                ... on WpNameField {
-                  id
-                  isRequired
-                  label
-                  type
-                  size
-                  visibility
-                  inputs {
-                    id
-                    key
-                    label
-                    placeholder
-                    isHidden
-                    choices {
-                      isSelected
-                      text
-                      value
-                    }
-                  }
-                }
-                ... on WpTextField {
-                  id
-                  size
-                  label
-                  cssClass
-                  isRequired
-                  description
-                  placeholder
-                }
-                ... on WpEmailField {
-                  id
-                  size
-                  label
-                  cssClass
-                  isRequired
-                  description
-                  placeholder
-                }
-                ... on WpTextAreaField {
-                  id
-                  size
-                  label
-                  cssClass
-                  isRequired
-                  description
-                  placeholder
-                }
               }
+            }
+            submitButton {
+              text
+              type
             }
           }
         }
       }
     `
   )
-  return { allWpGravityFormsForm }
+  return { allWpGfForm }
 }
 
 export default useGravityData

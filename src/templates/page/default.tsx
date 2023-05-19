@@ -17,7 +17,7 @@ const DefaultPageTemplate: React.FC<TemplatePageProps> = props => {
       <Layout title={title}>
         {!!template && (
           <FlexibleContent
-            modules={template.flexibleContentModules.contentModule}
+            components={template.flexibleContentModules.contentModule}
             data={{
               title,
               uri,
