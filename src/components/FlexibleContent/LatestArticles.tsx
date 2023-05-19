@@ -1,11 +1,17 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Parser from "html-react-parser"
+import {
+  graphql,
+  // Link
+} from "gatsby"
+// import { GatsbyImage, getImage } from "gatsby-plugin-image"
+// import Parser from "html-react-parser"
 
-import { FlexibleContentProps, ArticleItem } from "../../interfaces"
+import {
+  FlexibleContentProps,
+  // ArticleItem
+} from "../../interfaces"
 import Edges from "../Layout/Edges"
-import usePostData from "../../hooks/usePostData"
+// import usePostData from "../../hooks/usePostData"
 // import useDocData from "../../hooks/useDocData"
 
 export interface LatestArticlesProps extends FlexibleContentProps {
@@ -21,24 +27,24 @@ export interface LatestArticlesProps extends FlexibleContentProps {
   }
 }
 
-interface ArticlesProps {
-  title?: string
-  text?: string
-  button?: {
-    target?: string
-    title?: string
-    url?: string
-  }
-  items?: any
-}
+// interface ArticlesProps {
+//   title?: string
+//   text?: string
+//   button?: {
+//     target?: string
+//     title?: string
+//     url?: string
+//   }
+//   items?: any
+// }
 
 const LatestArticles: React.FC<LatestArticlesProps> = props => {
   const {
     latestArticlesTitle,
-    latestArticlesText,
-    latestArticlesPostType,
-    latestArticlesPostLimit,
-    latestArticlesButton,
+    // latestArticlesText,
+    // latestArticlesPostType,
+    // latestArticlesPostLimit,
+    // latestArticlesButton,
   } = props
 
   // const { allWpPost } = usePostData()
