@@ -1,7 +1,14 @@
 import React, { lazy } from "react"
 
+// import components
 import { FlexibleContentComponents } from "../../interfaces"
+import { SuspenseHelper } from "../SuspenseHelper"
 
+// import fallback components
+import { BannerFallback } from "./Banner"
+import { CallToActionFallback } from "./CallToAction"
+
+// lazy load flexible components
 const Banner = lazy(() => import("./Banner"))
 const CallToAction = lazy(() => import("./CallToAction"))
 // const Carousel = lazy(() => import("./Carousel"))
@@ -55,6 +62,29 @@ const allComponents: FlexibleContentComponents = {
   // Videos,
 }
 
+const allComponentsFallbacks = {
+  Banner: BannerFallback,
+  CallToAction: CallToActionFallback,
+  // Carousel: CarouselFallback,
+  // DataTable: DataTableFallback,
+  // Faq: FaqFallback,
+  // FeatureLinks: FeatureLinksFallback,
+  // Form: FormFallback,
+  // Gallery: GalleryFallback,
+  // Hero: HeroFallback,
+  // LatestArticles: LatestArticlesFallback,
+  // LinkBoxes: LinkBoxesFallback,
+  // List: ListFallback,
+  // Location: LocationFallback,
+  // Logos: LogosFallback,
+  // NavBlock: NavBlockFallback,
+  // SupportTiers: SupportTiersFallback,
+  // TextArea: TextAreaFallback,
+  // TextBlock: TextBlockFallback,
+  // TextImage: TextImageFallback,
+  // Videos: VideosFallback,
+}
+
 const FlexibleContent: React.FC<Props> = props => {
   const { components, data } = props
 
@@ -72,11 +102,14 @@ const FlexibleContent: React.FC<Props> = props => {
           .slice(-1)[0]
 
         const Component = allComponents[type]
+        const ComponentFallback = allComponentsFallbacks[type]
 
         return (
           Component && (
             <div key={index}>
-              <Component {...component} {...data} />
+              <SuspenseHelper fallback={ComponentFallback}>
+                <Component {...component} {...data} />
+              </SuspenseHelper>
             </div>
           )
         )
