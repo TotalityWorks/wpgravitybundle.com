@@ -3,7 +3,7 @@ import React, { lazy } from "react"
 import { FlexibleContentComponents } from "../../interfaces"
 
 const Banner = lazy(() => import("./Banner"))
-// const CallToAction = lazy(() => import("./CallToAction"))
+const CallToAction = lazy(() => import("./CallToAction"))
 // const Carousel = lazy(() => import("./Carousel"))
 // const DataTable = lazy(() => import("./DataTable"))
 // const Faq = lazy(() => import("./Faq"))
@@ -34,7 +34,7 @@ interface Props {
 
 const allComponents: FlexibleContentComponents = {
   Banner,
-  // CallToAction,
+  CallToAction,
   // Carousel,
   // DataTable,
   // Faq,
