@@ -15,7 +15,7 @@ const DefaultPageTemplate: React.FC<TemplatePageProps> = props => {
   return (
     <>
       <Layout title={title}>
-        {!!template && (
+        {/* {!!template && (
           <FlexibleContent
             components={template.flexibleContentModules.contentModule}
             data={{
@@ -24,7 +24,7 @@ const DefaultPageTemplate: React.FC<TemplatePageProps> = props => {
               slug,
             }}
           />
-        )}
+        )} */}
       </Layout>
     </>
   )
