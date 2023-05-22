@@ -25,7 +25,11 @@ export default function FooterMenu() {
                   {menu &&
                     menu.map((item: any) => {
                       return (
-                        <Link to={item.uri} style={{ marginRight: "15px" }}>
+                        <Link
+                          key={item.uri}
+                          to={item.uri}
+                          style={{ marginRight: "15px" }}
+                        >
                           {item.label}
                         </Link>
                       )

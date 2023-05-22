@@ -26,7 +26,7 @@ const PostArchive = (props: any) => {
                 getImage(post.archiveThumbnail.node.localFile)
 
               return (
-                <>
+                <div key={post.uri}>
                   {image && (
                     <GatsbyImage
                       image={image}
@@ -47,6 +47,7 @@ const PostArchive = (props: any) => {
                           (cat: { name: string; uri: string }, i: number) => {
                             return (
                               <Link
+                                key={cat.uri}
                                 to={cat.uri}
                                 className={`${i === 0 ? "" : "ml-[5px]"}`}
                                 children={cat.name}
@@ -58,7 +59,7 @@ const PostArchive = (props: any) => {
                   )}
 
                   {post.excerpt && <div children={Parser(post.excerpt)} />}
-                </>
+                </div>
               )
             })}
         </Edges>
