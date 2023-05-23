@@ -4,10 +4,10 @@ require(`dotenv`).config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `Totality Works Headless WordPress Template`,
+    description: `The easiest way to create your next headless project the Totality Works way.`,
+    author: `@mosesintech`,
+    siteUrl: `https://totalityworks.com/`,
   },
   plugins: [
     `gatsby-plugin-image`,
