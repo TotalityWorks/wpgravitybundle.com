@@ -15,6 +15,14 @@ export const PostFragment = graphql`
     title
     content
     excerpt
+    author {
+      node {
+        name
+        userInfo {
+          twitterHandle
+        }
+      }
+    }
     featuredImage {
       node {
         altText

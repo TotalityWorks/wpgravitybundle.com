@@ -19,7 +19,7 @@ export default function HeaderMenu() {
             <div className="ml-3 max-w-full	w-full">
               <div className="flex justify-between text-sm text-red-700">
                 <h2 className="not-prose text-sm font-medium text-red-800">
-                  {siteInfo.generalSettings.title}
+                  <Link to={"/"}>{siteInfo.generalSettings.title}</Link>
                 </h2>
                 <div>
                   {menu &&

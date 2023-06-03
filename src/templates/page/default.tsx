@@ -1,9 +1,13 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, HeadFC } from "gatsby"
 
-import { TemplatePageProps } from "../../interfaces"
+// import types
+import { TemplatePageProps, PageDataType } from "../../interfaces"
+
+// import components
 import Layout from "../../components/Layout/Layout"
 import FlexibleContent from "../../components/FlexibleContent"
+import Seo from "../../components/Seo"
 
 const DefaultPageTemplate: React.FC<TemplatePageProps> = props => {
   const {
@@ -14,7 +18,7 @@ const DefaultPageTemplate: React.FC<TemplatePageProps> = props => {
 
   return (
     <>
-      <Layout title={title}>
+      <Layout>
         {!!template && (
           <FlexibleContent
             components={template.flexibleContentModules.contentModule}
@@ -32,6 +36,25 @@ const DefaultPageTemplate: React.FC<TemplatePageProps> = props => {
 
 export default DefaultPageTemplate
 
+export const Head: HeadFC<PageDataType> = props => {
+  const {
+    data: {
+      page: { title },
+      allWp: { nodes },
+    },
+  } = props
+  const siteTitle = nodes[0].generalSettings.title
+  const googleVerify = nodes[0].seo.webmaster.googleVerify
+
+  return (
+    <Seo
+      title={title}
+      siteTitle={siteTitle}
+      googleVerification={googleVerify}
+    />
+  )
+}
+
 export const FlexibleContentQuery = graphql`
   query DefaultPage($id: String!) {
     page: wpPage(id: { eq: $id }) {
@@ -41,6 +64,19 @@ export const FlexibleContentQuery = graphql`
       template {
         ... on WpDefaultTemplate {
           ...DefaultTemplateFragment
+        }
+      }
+    }
+    allWp {
+      nodes {
+        generalSettings {
+          title
+          # description
+        }
+        seo {
+          webmaster {
+            googleVerify
+          }
         }
       }
     }

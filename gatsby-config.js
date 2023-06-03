@@ -4,10 +4,11 @@ require(`dotenv`).config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `Totality Works Headless WordPress Template`,
+    description: `Build your new headless project easily, the Totality Works way.`,
+    author: `@mosesintech`,
+    siteTwitter: `@mosesintech`,
+    siteUrl: `https://totalityworks.com/`,
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -27,9 +28,6 @@ module.exports = {
         short_name: `starter`,
         start_url: `/`,
         background_color: `#663399`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
@@ -41,7 +39,7 @@ module.exports = {
       },
     },
     `gatsby-theme-headless-wordpress`,
-    'gatsby-plugin-postcss',
+    "gatsby-plugin-postcss",
     {
       resolve: `gatsby-plugin-react-svg`,
       options: {
@@ -50,8 +48,5 @@ module.exports = {
         },
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }

@@ -1,11 +1,15 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql, Link, HeadFC } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Parser from "html-react-parser"
 
-import { ArticleItem } from "../../interfaces"
+// import types
+import { ArticleItem, PageDataType } from "../../interfaces"
+
+// import components
 import Layout from "../../components/Layout/Layout"
 import Edges from "../../components/Layout/Edges"
+import Seo from "../../components/Seo"
 
 const Category = (props: any) => {
   const {
@@ -13,7 +17,7 @@ const Category = (props: any) => {
   } = props
 
   return (
-    <Layout title={wpCategory.name} isCategory={true}>
+    <Layout isCategory={true}>
       <Edges size="lg">
         {wpCategory.name && <h1 children={wpCategory.name} />}
 
@@ -69,6 +73,18 @@ const Category = (props: any) => {
 
 export default Category
 
+export const Head: HeadFC<PageDataType> = props => {
+  const {
+    data: {
+      page: { title },
+      allWp: { nodes },
+    },
+  } = props
+  const siteTitle = nodes[0].generalSettings.title
+
+  return <Seo title={title} siteTitle={siteTitle} />
+}
+
 export const categoryQuery = graphql`
   query Category($id: String!, $postsPerPage: Int!, $offset: Int!) {
     wpCategory(id: { eq: $id }) {
@@ -92,6 +108,14 @@ export const categoryQuery = graphql`
     ) {
       nodes {
         ...PostFragment
+      }
+    }
+
+    allWp {
+      nodes {
+        generalSettings {
+          title
+        }
       }
     }
   }

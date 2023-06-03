@@ -1,23 +1,26 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql, Link, HeadFC } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Parser from "html-react-parser"
 
-import { ArticleItem } from "../../interfaces"
+// import types
+import { ArticleItem, PageDataType } from "../../interfaces"
+
+// import components
 import Layout from "../../components/Layout/Layout"
 import Edges from "../../components/Layout/Edges"
+import Seo from "../../components/Seo"
 
 const PostArchive = (props: any) => {
   const {
     data: {
-      page: { title },
       posts: { nodes: allPosts },
     },
   } = props
 
   return (
     <>
-      <Layout title={title}>
+      <Layout>
         <Edges size="lg">
           {allPosts &&
             allPosts.map((post: ArticleItem) => {
@@ -70,6 +73,18 @@ const PostArchive = (props: any) => {
 
 export default PostArchive
 
+export const Head: HeadFC<PageDataType> = props => {
+  const {
+    data: {
+      page: { title },
+      allWp: { nodes },
+    },
+  } = props
+  const siteTitle = nodes[0].generalSettings.title
+
+  return <Seo title={title} siteTitle={siteTitle} />
+}
+
 export const pageQuery = graphql`
   query WordPressPostsArchive(
     $id: String!
@@ -99,6 +114,14 @@ export const pageQuery = graphql`
     categories: allWpCategory {
       nodes {
         ...PostCategory
+      }
+    }
+
+    allWp {
+      nodes {
+        generalSettings {
+          title
+        }
       }
     }
   }

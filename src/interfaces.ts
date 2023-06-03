@@ -23,17 +23,32 @@ import { TextBlockProps } from "./components/FlexibleContent/TextBlock"
 import { TextImageProps } from "./components/FlexibleContent/TextImage"
 import { VideosProps } from "./components/FlexibleContent/Videos"
 
+interface Image {
+  node: {
+    localFile:
+      | IGatsbyImageData
+      | {
+          childImageSharp: {
+            gatsbyImageData: {
+              images: {
+                fallback: {
+                  src: string
+                }
+              }
+            }
+          }
+        }
+    altText: string
+  }
+}
+
 interface ArticleItem {
   title: string
   excerpt: string
   uri: string
   categories: { nodes: any }
-  thumbnail: {
-    node: { localFile: IGatsbyImageData; altText: string }
-  }
-  archiveThumbnail: {
-    node: { localFile: IGatsbyImageData; altText: string }
-  }
+  thumbnail: Image
+  archiveThumbnail: Image
 }
 
 interface FlexibleContentProps extends PageProps {
@@ -41,15 +56,60 @@ interface FlexibleContentProps extends PageProps {
   slug?: string
 }
 
-interface TemplatePageProps extends PageProps {
-  data: {
-    page: {
-      title?: string
-      uri?: string
-      slug?: string
-      template?: any
-    }
+interface DataType {
+  allWp: {
+    nodes: {
+      generalSettings: {
+        title: string
+        description: string
+      }
+      acfOptionsGlobalOptions: {
+        websiteSeoInfo: {
+          websiteUrl: string
+          twitterHandle: string
+        }
+      }
+      seo: {
+        webmaster: {
+          googleVerify: string
+        }
+      }
+    }[]
   }
+}
+
+interface PageDataType extends DataType {
+  page: {
+    title?: string
+    uri?: string
+    slug?: string
+    template?: any
+  }
+}
+
+interface PostDataType extends DataType {
+  wpPost: {
+    title?: string
+    content?: string
+    featuredImage?: Image
+    author?: {
+      node?: {
+        name?: string
+        userInfo?: {
+          twitterHandle?: string
+        }
+      }
+    }
+    categories?: any
+  }
+}
+
+interface TemplatePageProps extends PageProps {
+  data: PageDataType
+}
+
+interface TemplatePostProps extends PageProps {
+  data: PostDataType
 }
 
 interface FlexibleContentComponents {
@@ -80,4 +140,7 @@ export {
   FlexibleContentProps,
   FlexibleContentComponents,
   TemplatePageProps,
+  TemplatePostProps,
+  PageDataType,
+  PostDataType,
 }
