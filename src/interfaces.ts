@@ -87,6 +87,13 @@ interface PageDataType extends DataType {
   }
 }
 
+interface CategoryPageDataType extends DataType {
+  categories: {
+    name?: string
+    uri?: string
+  }
+}
+
 interface PostDataType extends DataType {
   wpPost: {
     title?: string
@@ -142,5 +149,6 @@ export {
   TemplatePageProps,
   TemplatePostProps,
   PageDataType,
+  CategoryPageDataType,
   PostDataType,
 }
