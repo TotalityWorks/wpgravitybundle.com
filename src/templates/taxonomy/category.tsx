@@ -30,7 +30,7 @@ const Category = (props: any) => {
               getImage(post.archiveThumbnail.node.localFile)
 
             return (
-              <>
+              <div key={post.uri}>
                 {image && (
                   <GatsbyImage
                     image={image}
@@ -52,6 +52,7 @@ const Category = (props: any) => {
                         (cat: { name: string; uri: string }, i: number) => {
                           return (
                             <Link
+                              key={cat.uri}
                               to={cat.uri}
                               className={`${i === 0 ? "" : "ml-[5px]"}`}
                               children={cat.name}
@@ -63,7 +64,7 @@ const Category = (props: any) => {
                 )}
 
                 {post.excerpt && <div children={Parser(post.excerpt)} />}
-              </>
+              </div>
             )
           })}
       </Edges>

@@ -34,6 +34,7 @@ const DefaultPostTemplate: React.FC<TemplatePostProps> = props => {
                 (cat: { name: string; uri: string }, i: number) => {
                   return (
                     <Link
+                      key={cat.uri}
                       to={cat.uri}
                       className={`${i === 0 ? "" : "ml-[5px]"}`}
                       children={cat.name}

@@ -1,7 +1,9 @@
-import React, { lazy } from "react"
+import React, { lazy, Suspense } from "react"
 
+// import components
 import { FlexibleContentComponents } from "../../interfaces"
 
+// lazy load flexible components
 const Banner = lazy(() => import("./Banner"))
 const CallToAction = lazy(() => import("./CallToAction"))
 const Carousel = lazy(() => import("./Carousel"))
@@ -76,7 +78,9 @@ const FlexibleContent: React.FC<Props> = props => {
         return (
           Component && (
             <div key={index}>
-              <Component {...component} {...data} />
+              <Suspense fallback={<Component {...component} {...data} />}>
+                <Component {...component} {...data} />
+              </Suspense>
             </div>
           )
         )
