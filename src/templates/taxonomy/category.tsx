@@ -83,7 +83,7 @@ export const Head: HeadFC<CategoryPageDataType> = props => {
   } = props
   const siteTitle = nodes[0].generalSettings.title
 
-  return <Seo title={name} siteTitle={siteTitle} />
+  return <Seo pageTitle={name} siteTitle={siteTitle} />
 }
 
 export const categoryQuery = graphql`

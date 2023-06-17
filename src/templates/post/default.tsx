@@ -1,10 +1,10 @@
 import React from "react"
 import { graphql, Link, HeadFC } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
 import Parser from "html-react-parser"
 
 // import types
-import { TemplatePostProps, PostDataType } from "../../interfaces"
+import type { TemplatePostProps, PostDataType } from "../../interfaces"
 
 // import components
 import Edges from "../../components/Layout/Edges"
@@ -16,12 +16,13 @@ const DefaultPostTemplate: React.FC<TemplatePostProps> = props => {
     data: {
       wpPost: { title, content, featuredImage, categories },
     },
-    pageContext: { archivePath },
+    pageContext,
   } = props
   const image =
     featuredImage?.node?.localFile && getImage(featuredImage.node.localFile)
+
   return (
-    <Layout archivePath={archivePath}>
+    <Layout archivePath={""}>
       <Edges size="lg">
         <h1 children={title} />
         {image && (
@@ -60,24 +61,28 @@ export const Head: HeadFC<PostDataType> = props => {
     },
   } = props
   const siteTitle = nodes[0].generalSettings.title
+
   // the Parser here converts characters like '&#039;'
   const description = Parser(nodes[0].generalSettings.description).toString()
   const websiteUrl = nodes[0].acfOptionsGlobalOptions.websiteSeoInfo.websiteUrl
-  const twitterHandle =
-    nodes[0].acfOptionsGlobalOptions.websiteSeoInfo.twitterHandle
+  const siteTwitter = nodes[0].seo.social.twitter.username
   const image =
-    featuredImage?.node.localFile.childImageSharp.gatsbyImageData.images
-      .fallback.src
+    featuredImage?.node?.localFile && getSrc(featuredImage.node.localFile)
+  const imageAlt = featuredImage?.node.altText
+  const googleVerify = nodes[0].seo.webmaster.googleVerify
 
   return (
     <Seo
-      title={title}
-      description={description}
+      pageTitle={title}
       siteTitle={siteTitle}
+      description={description}
+      author={author?.node?.seo?.social?.twitter}
       image={image}
-      author={author?.node?.userInfo?.twitterHandle}
+      imageAlt={imageAlt}
       siteUrl={websiteUrl}
-      siteTwitter={twitterHandle}
+      siteTwitter={siteTwitter}
+      pathname={title}
+      googleVerification={googleVerify}
     />
   )
 }
@@ -103,7 +108,16 @@ export const PostSingleQuery = graphql`
         acfOptionsGlobalOptions {
           websiteSeoInfo {
             websiteUrl
-            twitterHandle
+          }
+        }
+        seo {
+          webmaster {
+            googleVerify
+          }
+          social {
+            twitter {
+              username
+            }
           }
         }
       }

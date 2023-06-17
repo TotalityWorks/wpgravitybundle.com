@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Parser from "html-react-parser"
 
 // import types
-import { ArticleItem, PageDataType } from "../../interfaces"
+import type { ArticleItem, PageDataType } from "../../interfaces"
 
 // import components
 import Layout from "../../components/Layout/Layout"
@@ -82,7 +82,7 @@ export const Head: HeadFC<PageDataType> = props => {
   } = props
   const siteTitle = nodes[0].generalSettings.title
 
-  return <Seo title={title} siteTitle={siteTitle} />
+  return <Seo pageTitle={title} siteTitle={siteTitle} />
 }
 
 export const pageQuery = graphql`

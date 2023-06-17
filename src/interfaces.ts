@@ -25,19 +25,7 @@ import { VideosProps } from "./components/FlexibleContent/Videos"
 
 interface Image {
   node: {
-    localFile:
-      | IGatsbyImageData
-      | {
-          childImageSharp: {
-            gatsbyImageData: {
-              images: {
-                fallback: {
-                  src: string
-                }
-              }
-            }
-          }
-        }
+    localFile: IGatsbyImageData
     altText: string
   }
 }
@@ -66,12 +54,16 @@ interface DataType {
       acfOptionsGlobalOptions: {
         websiteSeoInfo: {
           websiteUrl: string
-          twitterHandle: string
         }
       }
       seo: {
         webmaster: {
           googleVerify: string
+        }
+        social: {
+          twitter: {
+            username: string
+          }
         }
       }
     }[]
@@ -84,6 +76,16 @@ interface PageDataType extends DataType {
     uri?: string
     slug?: string
     template?: any
+    seo?: {
+      metaDesc?: string
+      twitterTitle?: string
+      twitterDescription?: string
+      twitterImage?: {
+        localFile?: IGatsbyImageData
+        altText?: string
+      }
+    }
+    featuredImage?: Image
   }
 }
 
@@ -102,8 +104,10 @@ interface PostDataType extends DataType {
     author?: {
       node?: {
         name?: string
-        userInfo?: {
-          twitterHandle?: string
+        seo?: {
+          social?: {
+            twitter: string
+          }
         }
       }
     }

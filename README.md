@@ -59,6 +59,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus auctor mollis
 ### Flexible Content Modules
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus auctor mollis magna sed viverra. Donec eu pulvinar diam, in varius diam. Morbi et mauris id dolor consectetur vulputate quis et ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut eu facilisis libero. Pellentesque malesuada ligula sed hendrerit vehicula. Maecenas in lacus elit.
 
+### SEO
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus auctor mollis magna sed viverra. Donec eu pulvinar diam, in varius diam. Morbi et mauris id dolor consectetur vulputate quis et ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut eu facilisis libero. Pellentesque malesuada ligula sed hendrerit vehicula. Maecenas in lacus elit.
+
 ### DevDependencies
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus auctor mollis magna sed viverra. Donec eu pulvinar diam, in varius diam. Morbi et mauris id dolor consectetur vulputate quis et ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut eu facilisis libero. Pellentesque malesuada ligula sed hendrerit vehicula. Maecenas in lacus elit.
 

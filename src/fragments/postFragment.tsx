@@ -18,8 +18,10 @@ export const PostFragment = graphql`
     author {
       node {
         name
-        userInfo {
-          twitterHandle
+        seo {
+          social {
+            twitter
+          }
         }
       }
     }
