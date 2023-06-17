@@ -1,10 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import { FlexibleContentProps } from "../../interfaces"
+// import types
+import type { FlexibleContentProps } from "../../interfaces"
+
+// import components
 import Edges from "../Layout/Edges"
-import useGravityData from "../../hooks/useGravityData"
 import SingleForm from "../SingleForm"
+import useGravityData from "../../hooks/useGravityData"
 
 export interface FormProps extends FlexibleContentProps {
   formId?: string

@@ -1,9 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Parser from "html-react-parser"
 
-import { FlexibleContentProps } from "../../interfaces"
+// import types
+import type { FlexibleContentProps } from "../../interfaces"
+import type { IGatsbyImageData } from "gatsby-plugin-image"
+
+// import components
 import Edges from "../Layout/Edges"
 
 export interface TextImageProps extends FlexibleContentProps {

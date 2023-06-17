@@ -2,7 +2,10 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-import { FlexibleContentProps } from "../../interfaces"
+// import types
+import type { FlexibleContentProps } from "../../interfaces"
+
+// import components
 import Edges from "../Layout/Edges"
 
 type LinkBox = {

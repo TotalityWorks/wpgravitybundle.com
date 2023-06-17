@@ -1,8 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { IGatsbyImageData } from "gatsby-plugin-image"
 
-import { FlexibleContentProps } from "../../interfaces"
+// import types
+import type { IGatsbyImageData } from "gatsby-plugin-image"
+import type { FlexibleContentProps } from "../../interfaces"
+
+// import components
 import Edges from "../Layout/Edges"
 
 export interface HeroProps extends FlexibleContentProps {

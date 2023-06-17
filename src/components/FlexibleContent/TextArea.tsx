@@ -2,7 +2,10 @@ import React from "react"
 import { graphql } from "gatsby"
 // import Parser from "html-react-parser"
 
-import { FlexibleContentProps } from "../../interfaces"
+// import types
+import type { FlexibleContentProps } from "../../interfaces"
+
+// import components
 import Edges from "../Layout/Edges"
 
 export interface TextAreaProps extends FlexibleContentProps {

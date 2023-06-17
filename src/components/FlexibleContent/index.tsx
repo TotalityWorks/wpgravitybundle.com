@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from "react"
 
-// import components
-import { FlexibleContentComponents } from "../../interfaces"
+// import types
+import type { FlexibleContentComponents } from "../../interfaces"
 
 // lazy load flexible components
 const Banner = lazy(() => import("./Banner"))

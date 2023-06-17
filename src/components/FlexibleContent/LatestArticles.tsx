@@ -6,10 +6,13 @@ import {
 // import { GatsbyImage, getImage } from "gatsby-plugin-image"
 // import Parser from "html-react-parser"
 
-import {
+// import types
+import type {
   FlexibleContentProps,
   // ArticleItem
 } from "../../interfaces"
+
+// import components
 import Edges from "../Layout/Edges"
 // import usePostData from "../../hooks/usePostData"
 // import useDocData from "../../hooks/useDocData"
