@@ -2,8 +2,11 @@ import React from "react"
 import { useMutation } from "urql"
 import GravityForm, { useGravityFormMutation } from "wpgravitybundle"
 
+// import types
+import type { Form } from "wpgravitybundle"
+
 interface SingleFormProps {
-  form: any
+  form: Form
 }
 
 const SingleForm: React.FC<SingleFormProps> = ({ form }) => {
@@ -34,6 +37,7 @@ const SingleForm: React.FC<SingleFormProps> = ({ form }) => {
       {form && (
         <>
           <GravityForm form={form} onSubmit={handleSubmit} />
+          <pre>{SubmitForm}</pre>
         </>
       )}
     </>

@@ -20,14 +20,14 @@ const Form: React.FC<FormProps> = props => {
   const {
     formId,
     formTitle,
-    formText,
+    // formText,
     // formBackgroundColor
   } = props
 
   const { allWpGfForm } = useGravityData()
 
   const form = allWpGfForm.nodes.find(
-    (form: any) => Number(form.formId) === Number(formId)
+    (form: any) => Number(form.databaseId) === Number(formId)
   )
 
   return (
@@ -46,16 +46,16 @@ const Form: React.FC<FormProps> = props => {
                 </h3>
                 <div className="mt-2 text-sm text-red-700">
                   <pre>{JSON.stringify(props, null, 2)}</pre>
+                  {form && (
+                    <>
+                      <SingleForm form={form} />
+                    </>
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {/* {form && (
-          <>
-            <SingleForm form={form} />
-          </>
-        )} */}
       </Edges>
     </>
   )

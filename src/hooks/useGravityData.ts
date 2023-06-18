@@ -10,7 +10,34 @@ const useGravityData = () => {
             cssClass
             formFields {
               nodes {
+                databaseId
                 type
+                visibility
+                pageNumber
+                ... on WpTextField {
+                  cssClass
+                  defaultValue
+                  description
+                  descriptionPlacement
+                  errorMessage
+                  isRequired
+                  label
+                  labelPlacement
+                  placeholder
+                  size
+                }
+                ... on WpTextAreaField {
+                  cssClass
+                  defaultValue
+                  description
+                  descriptionPlacement
+                  errorMessage
+                  isRequired
+                  label
+                  labelPlacement
+                  placeholder
+                  size
+                }
               }
             }
             submitButton {
